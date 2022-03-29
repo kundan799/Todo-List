@@ -1,20 +1,23 @@
-document.querySelector("#form").addEventListener("submit", myFunction);
-var todoList=JSON.parse(localStorage.getItem("todoData"))||[];
-// var todoList = [];
-function myFunction() {
-  event.preventDefault();
-  var name = document.querySelector("#name").value;
-  var quantity = document.querySelector("#qty").value;
-  var prior = document.querySelector("#priority").value;
+document.querySelector("form").addEventListener("submit",mytakefrominput);
 
-  var todoObj = {
-    itemName: name,
-    itemQty: quantity,
-    itemPrior: prior,
+var inputdata=JSON.parse(localStorage.getItem("inputdata"))||[];
+function mytakefrominput(){
+  event.preventDefault()
+ // console.log("kundan");
+  var name=document.querySelector("#name").value;
+  var quantity=document.querySelector("#qty").value;
+  var priority=document.querySelector("#priority").value;
+ // console.log(name,quantity,priority);
+  var tobj={
+    name:name,
+    quantity:quantity,
+    priority:priority,
   };
-  //console.log(todoObj);
-  todoList.push(todoObj);
-  console.log(todoList);
+  //console.log(obj)
+  inputdata.push(tobj);
+  console.log(inputdata)
+  localStorage.setItem("inputdata",JSON.stringify(inputdata))
 
-  localStorage.setItem("todoData", JSON.stringify(todoList));
+
+ 
 }
